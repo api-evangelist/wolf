@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: fromwolf.com
+  https: false
+- host: docs.fromwolf.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  1 02:55:23 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.wolf.xyz
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 25 23:59:59 2026 GMT
+  hsts: false
+domains:
+- domain: fromwolf.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: wolf.xyz
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false

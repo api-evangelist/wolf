@@ -1,7 +1,29 @@
 aid: wolf
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wolf.png
 name: Wolf
-description: Wolf is a company surfaced as a portfolio company of techstars and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Wolf (fromwolf.com) is a white-label, multi-tenant staffing and gig-work
+  platform that lets staffing companies run their own branded on-demand
+  workforce. Its API coordinates job seekers, clients, campaigns (client
+  orders), shifts, tenders (a seeker's request to work a shift), applications,
+  timesheets, availability, notifications, and in-app chat — everything needed
+  to build a client- or worker-facing staffing interface on top of the Wolf
+  backend. Each tenant runs on its own database and authenticates with a tenant
+  key plus a platform API key or per-user authentication token. Wolf was
+  surfaced as a Techstars portfolio company and profiled by the API Evangelist
+  network.
 url: https://raw.githubusercontent.com/api-evangelist/wolf/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,15 +33,74 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Staffing
+- Gig Economy
+- Workforce Management
+- Jobs
+- Scheduling
+- On-Demand Staffing
+- Chat
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: Wolf Staffing API
+  description: >-
+    Multi-tenant REST API for building client- and job-seeker-facing staffing
+    interfaces on the Wolf platform: authentication, jobs/shifts, tenders,
+    availability, timesheets, notifications, job-seeker and client profiles,
+    onboarding, credentialing, and chat.
+  humanURL: https://docs.fromwolf.com/
+  baseURL: https://api.wolf.xyz/api/v1/
+  properties:
+  - type: Documentation
+    url: https://docs.fromwolf.com/
+  - type: APIReference
+    url: https://docs.fromwolf.com/
+  - type: GettingStarted
+    url: https://docs.fromwolf.com/glossary/core-attributes-of-all-api
+  - type: Authentication
+    url: authentication/wolf-authentication.yml
+  - type: LLMsTxt
+    url: llms/wolf-llms.txt
+  - type: Conventions
+    url: conventions/wolf-conventions.yml
+  - type: ErrorCatalog
+    url: errors/wolf-problem-types.yml
+  - type: DataModel
+    url: data-model/wolf-data-model.yml
+  - type: MCPServer
+    url: mcp/wolf-mcp.yml
+  - type: Lifecycle
+    url: lifecycle/wolf-lifecycle.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 12
+  pass: local-v1
 common:
+- type: DomainSecurity
+  url: security/wolf-domain-security.yml
 - type: Website
   url: https://fromwolf.com/
+- type: DeveloperPortal
+  url: https://docs.fromwolf.com/
+- type: Documentation
+  url: https://docs.fromwolf.com/
+- type: APIReference
+  url: https://docs.fromwolf.com/
+- type: GettingStarted
+  url: https://docs.fromwolf.com/glossary/core-attributes-of-all-api
+- type: Authentication
+  url: authentication/wolf-authentication.yml
+- type: LLMsTxt
+  url: llms/wolf-llms.txt
+- type: WellKnown
+  url: well-known/wolf-well-known.yml
+- type: AgentSkill
+  url: skills/_index.yml

@@ -1,0 +1,95 @@
+generated: '2026-07-21'
+method: derived
+source: https://docs.fromwolf.com/llms.txt
+docs: https://docs.fromwolf.com/
+description: >-
+  Entity-relationship model for the Wolf staffing-platform API, derived from the
+  documented resources and response payloads. Wolf coordinates staffing between
+  tenants (staffing companies), their clients, and job seekers via campaigns,
+  shifts and tenders.
+entities:
+- name: Tenant
+  description: Staffing company operating a white-labelled instance; owns its own
+    database. Identified by a tenant key (often ending '_db').
+  key_fields: [tenant_code, branding, configuration]
+  relationships:
+  - has_many: Client (via tenant_code)
+  - has_many: JobSeeker (via tenant_code)
+  - has_many: Campaign (via tenant_code)
+- name: User
+  description: Base account record; user_type distinguishes 'freelancer' (job seeker)
+    from client/staff users. Holds the authentication_token.
+  key_fields: [id, email, user_type, authentication_token, country_id, locale]
+  relationships:
+  - has_one: JobSeeker (via user_id)
+- name: JobSeeker
+  description: Freelancer profile — bio, ratings, credentials, education/experience,
+    availability, bank connection, custom onboarding answers.
+  key_fields: [id, user_id, name, tenant_code, verified, average_rating, latitude, longitude]
+  relationships:
+  - belongs_to: User (via user_id)
+  - has_many: Tender (via jobseeker id)
+  - has_many: Availability (via jobseeker id)
+  - has_many: Timesheet (via jobseeker id)
+- name: Client
+  description: Customer of the staffing company that places staffing orders (campaigns).
+  key_fields: [id, profile]
+  relationships:
+  - has_many: Campaign (via client id)
+- name: Campaign
+  description: An order from a client for a specific job type; a description of
+    requirements.
+  key_fields: [id, client_id, job_type, description]
+  relationships:
+  - belongs_to: Client (via client_id)
+  - has_many: Shift (via campaign id)
+  - has_many: Application (via campaign id)
+- name: Shift
+  description: A specific start/end time slot under a campaign.
+  key_fields: [id, campaign_id, start_time, end_time]
+  relationships:
+  - belongs_to: Campaign (via campaign_id)
+  - has_many: Tender (via shift id)
+- name: Tender
+  description: A job seeker's request to work a given shift (apply, reconfirm,
+    cancel, check-in, check-out).
+  key_fields: [id, shift_id, jobseeker_id, status]
+  relationships:
+  - belongs_to: Shift (via shift_id)
+  - belongs_to: JobSeeker (via jobseeker_id)
+  - has_one: Timesheet (via tender id)
+- name: Application
+  description: A job seeker's interest/qualification for a campaign at large
+    (broader than a single shift tender).
+  key_fields: [id, campaign_id, jobseeker_id, status]
+  relationships:
+  - belongs_to: Campaign (via campaign_id)
+  - belongs_to: JobSeeker (via jobseeker_id)
+- name: Timesheet
+  description: Report of hours worked for a given tender (thus a given shift and
+    job seeker).
+  key_fields: [id, tender_id, jobseeker_id]
+  relationships:
+  - belongs_to: Tender (via tender_id)
+  - belongs_to: JobSeeker (via jobseeker_id)
+- name: Availability
+  description: Job seeker calendar — scheduled shifts, auto availability, days
+    blocked off.
+  key_fields: [jobseeker_id, calendar]
+  relationships:
+  - belongs_to: JobSeeker (via jobseeker_id)
+- name: Notification
+  description: Per-user notification with read status.
+  key_fields: [id, user_id, read]
+  relationships:
+  - belongs_to: User (via user_id)
+- name: ChatChannel
+  description: Conversation/inbox thread between users.
+  key_fields: [id, participants]
+  relationships:
+  - has_many: ChatMessage (via channel id)
+- name: ChatMessage
+  description: A message within a chat channel.
+  key_fields: [id, channel_id, sender_id, message_type, body]
+  relationships:
+  - belongs_to: ChatChannel (via channel_id)

@@ -1,0 +1,121 @@
+generated: '2026-07-21'
+method: derived
+source: https://docs.fromwolf.com/llms.txt
+status: candidate
+description: >-
+  Candidate MCP (Model Context Protocol) server tool surface for the Wolf
+  staffing-platform API, derived from the documented operations. No official
+  hosted/remote Wolf MCP server was found. This is a proposed tool list an MCP
+  server could expose; each tool maps to a documented HTTP operation. Auth
+  requires the tenant key plus a platform API key or user auth token.
+official_server: null
+base_url: https://api.wolf.xyz/api/v1/
+tools:
+- name: sign_in
+  description: Authenticate a user and obtain an authentication_token.
+  method: POST
+  path: /sign_in
+- name: request_one_time_password
+  description: Request a one-time password for a user sign-in.
+  method: GET
+  path: /request_one_time_password
+- name: get_tenant_data
+  description: Get tenant configuration and branding details.
+  method: GET
+  path: /tenant-data
+- name: get_version_status
+  description: Get app version status for an app category.
+  method: GET
+  path: /version_status/:app_category
+- name: list_available_jobs
+  description: Get available and upcoming jobs for a job seeker.
+  method: GET
+  path: /shifts/view_all_jobs
+- name: list_new_opportunities
+  description: Get scoped new opportunities for a job seeker.
+  method: GET
+  path: /shifts/new_opportunities
+- name: get_calendar_schedule
+  description: View a job seeker's availability and calendar schedule.
+  method: GET
+  path: /shifts/my_calendar_schedule
+- name: toggle_availability
+  description: Toggle auto-availability for a job seeker.
+  method: POST
+  path: /shifts/toggle_availability
+- name: update_campaign_status
+  description: Make/update a campaign request on behalf of a job seeker.
+  method: POST
+  path: /shifts/campaign_update_status
+- name: update_shift_status
+  description: Apply, reconfirm, cancel, check-in or check-out of a shift.
+  method: POST
+  path: /shifts/shift_update_status
+- name: get_timesheets
+  description: Retrieve timesheets for a user.
+  method: GET
+  path: /shifts/timesheets
+- name: get_notifications
+  description: Get notifications for a user and set read status.
+  method: GET
+  path: /notifications
+- name: get_shift_tender_status
+  description: Status of jobs a candidate has applied for.
+  method: GET
+  path: /shifts/tender_status
+- name: get_upnext
+  description: Get what's next for a job seeker.
+  method: GET
+  path: /bid/up_next_for_candidate
+- name: create_or_update_jobseeker
+  description: Create or update a job seeker profile.
+  method: POST
+  path: /create_or_update_jobseeker
+- name: get_custom_onboarding
+  description: Retrieve/submit custom onboarding questions for a job seeker.
+  method: GET
+  path: /jobseeker/get_custom_onboarding
+- name: get_job_type_preferences
+  description: List and update a job seeker's job-type preferences.
+  method: GET
+  path: /shifts/jobseeker_jobtype_preferences
+- name: get_credentialing_requirements
+  description: Get credentialing requirements for a job seeker.
+  method: GET
+  path: /jobseeker/get_credentials_requirements
+- name: update_unique_coordinate
+  description: Push updated contact coordinates (phone/email/messenger id).
+  method: POST
+  path: /jobseeker/unique_coordinate_update
+- name: get_jobseeker_profile
+  description: Get a job seeker profile.
+  method: GET
+  path: /shifts/get_jobseeker
+- name: get_education_and_experience
+  description: Get a job seeker's education and experience.
+  method: GET
+  path: /jobseeker/education_and_experience
+- name: bank_connection_status
+  description: Get a job seeker's Stripe bank-connection status.
+  method: GET
+  path: /jobseeker/bank_connection_setup_status
+- name: get_client_profile
+  description: Get a client profile.
+  method: GET
+  path: /companies/get_client_profile
+- name: update_client_profile
+  description: Create or update a client profile.
+  method: POST
+  path: /companies/update_client_profile
+- name: get_inbox
+  description: Get the chat inbox for a user.
+  method: GET
+  path: /chat/inbox
+- name: get_conversation
+  description: Get a detailed chat conversation.
+  method: GET
+  path: /chat/conversation
+- name: send_chat_message
+  description: Send a chat message.
+  method: POST
+  path: /chat/send_message

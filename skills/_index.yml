@@ -1,0 +1,17 @@
+generated: '2026-07-21'
+method: generated
+source: https://docs.fromwolf.com/llms.txt
+description: >-
+  Packaged Agent Skills for the Wolf staffing-platform API, each grounded in
+  documented operations. Auth requires the tenant key plus a platform API key
+  or user authentication token.
+api: Wolf Staffing API
+base_url: https://api.wolf.xyz/api/v1/
+skills:
+- name: wolf-job-seeker-shift-flow
+  file: wolf-job-seeker-shift-flow.md
+  description: Sign in, find shifts, apply, and check in/out.
+- name: wolf-jobseeker-onboarding
+  file: wolf-jobseeker-onboarding.md
+  description: Create/update a job seeker profile and complete onboarding, credentials,
+    preferences and bank connection.

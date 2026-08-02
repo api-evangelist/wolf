@@ -1,0 +1,56 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.fromwolf.com/glossary/core-attributes-of-all-api
+docs: https://docs.fromwolf.com/user-api/authentication-api
+description: >-
+  Authentication profile for the Wolf staffing-platform API, derived from the
+  published developer documentation. Wolf is multi-tenant: every request must
+  carry a tenant key plus one of two credentials — a platform API key (acting on
+  behalf of the staffing company / tenant) or a user authentication token
+  (acting on behalf of a job seeker or client). No OAuth 2.0 / OpenID Connect
+  authorization server is documented.
+base_url: https://api.wolf.xyz/api/v1/
+multi_tenant: true
+tenant_key:
+  required: true
+  description: >-
+    Tenant (staffing company) identifier, supplied on every call. Most tenant
+    keys end in '_db' (e.g. 'brandname_db'). Obtained from the tenant / account
+    manager; cannot be self-issued.
+  location: request body / query parameter
+  parameter: tenant
+schemes:
+- id: platform_api_key
+  type: apiKey
+  in: header
+  name: Authentication
+  scope: tenant
+  description: >-
+    Platform API key identifying the staffing company (tenant). Used when acting
+    on behalf of the tenant (e.g. reading tenant configuration, updating client
+    profiles, pushing unique-coordinate updates). Documented as always safe to
+    include to avoid access-denied responses. Treated like a password; rotating
+    it causes significant downtime.
+- id: user_auth_token
+  type: apiKey
+  in: header
+  name: Authentication
+  scope: user
+  description: >-
+    Per-user authentication_token returned by POST /sign_in. Required for actions
+    taken on behalf of a user (job seeker or client) — viewing jobs, applying,
+    check-in / check-out, availability, chat. User type must be 'freelancer' to
+    access jobs.
+  issued_by:
+    operation: sign_in
+    method: POST
+    url: https://api.wolf.xyz/api/v1/sign_in
+    returns: user.authentication_token
+oauth2: false
+openid_connect: false
+mutual_tls: false
+notes:
+- Keys are issued out-of-band by the tenant / account manager; there is no
+  self-service key portal documented.
+- One-time-password (OTP) is supported as an optional sign-in factor
+  (request_one_time_password + one_time_password field on sign_in).

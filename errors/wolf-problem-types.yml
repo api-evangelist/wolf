@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.fromwolf.com/user-api/authentication-api
+docs: https://docs.fromwolf.com/glossary/core-attributes-of-all-api
+description: >-
+  Error catalog for the Wolf staffing-platform API, captured from the error
+  examples in the published developer documentation. Wolf uses a custom JSON
+  error envelope (NOT RFC 9457 problem+json).
+format: custom-json
+rfc9457: false
+envelope:
+  status: HTTP-style status code echoed in the body
+  data:
+    opertaion_status: short machine string, e.g. 'Error' or 'Failed authorizing user'
+  message: human-readable message
+problem_types:
+- status: 400
+  title: Missing Parameters
+  operation_status: Error
+  message: Missing Parameters
+  remediation: Supply all required request parameters, including the tenant key
+    and (where required) a user authentication token.
+- status: 400
+  title: Invalid message type
+  operation_status: Error
+  message: Message type is invalid
+  remediation: Use a supported chat message type when calling the Send Chat Message
+    endpoint.
+- status: 401
+  title: Unauthorized Access Attempt
+  operation_status: Failed authorizing user
+  message: Unaauthorized Access Attempt
+  remediation: Provide a valid platform API key and/or user authentication token
+    for the correct tenant. User type must be 'freelancer' to access job resources.
+- status: 401
+  title: Authentication Failed
+  operation_status: null
+  message: Authentication Failed
+  remediation: Re-authenticate via POST /sign_in and resend the request with the
+    returned authentication_token.
+- status: 404
+  title: Not Found
+  operation_status: null
+  message: Resource not found
+  remediation: Verify the resource identifier and that it belongs to the
+    authenticated tenant.

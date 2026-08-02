@@ -1,0 +1,62 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.fromwolf.com/glossary/core-attributes-of-all-api
+docs: https://docs.fromwolf.com/
+description: >-
+  Cross-cutting runtime conventions for the Wolf staffing-platform API, captured
+  from the published developer documentation. Wolf is a white-label, multi-tenant
+  gig-work / staffing backend (job seekers, clients, campaigns, shifts, tenders,
+  timesheets, chat).
+base_url: https://api.wolf.xyz/api/v1/
+legacy_base_urls:
+- https://www.ondemandstaffing.app/api/v1/
+- https://ondemandstaffing.app/api/v1/
+versioning:
+  style: uri-path
+  current: v1
+  path_prefix: /api/v1/
+  app_version_check:
+    operation: version_status
+    url: https://api.wolf.xyz/api/v1/version_status/:app_category
+    description: Client apps can query minimum/current app version status per app_category.
+auth:
+  style: apiKey-header + tenant-key
+  header: Authentication
+  tenant_parameter: tenant
+  detail: See authentication/wolf-authentication.yml
+tenancy:
+  model: hard-multi-tenant
+  detail: >-
+    Each tenant has a separate database. Every request must include the tenant
+    key (most end in '_db') plus an API key or user auth token.
+error_envelope:
+  style: custom-json
+  rfc9457: false
+  shape:
+    status: HTTP-style status code echoed in the body (e.g. 400, 401, 404)
+    data:
+      opertaion_status: short machine string ('Error' | 'Failed authorizing user')
+    message: human-readable message
+  detail: See errors/wolf-problem-types.yml
+pagination:
+  documented: false
+  note: No cursor/offset pagination scheme is described in the public docs.
+rate_limiting:
+  documented: false
+  note: No rate-limit headers or quotas are described in the public docs.
+request_id_tracing:
+  documented: false
+idempotency:
+  documented: false
+  note: >-
+    No idempotency-key mechanism is documented. State-changing flows (apply,
+    check-in/out, cancellation) are modeled as explicit status-update operations
+    (shift_update_status, campaign_update_status) rather than idempotent PUTs.
+metadata_conventions:
+  timestamps: ISO 8601 (created_at / updated_at) on returned objects
+  identifiers: integer primary ids (user id, jobseeker id, shift id) plus opaque
+    string tokens on some resources
+cross_reference:
+  errors: errors/wolf-problem-types.yml
+  authentication: authentication/wolf-authentication.yml
+  data_model: data-model/wolf-data-model.yml

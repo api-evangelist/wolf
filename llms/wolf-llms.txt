@@ -1,0 +1,34 @@
+# Wolf-core
+
+## Wolf-core
+
+- [Wolf API Documentation](https://docs.fromwolf.com/master.md): All the APIs allowing you to build your own client facing interface.
+- [Tenant Data  API](https://docs.fromwolf.com/tenant-data-api.md): Get data, configuration and branding details about the tenant
+- [App version status](https://docs.fromwolf.com/app-version-status.md)
+- [Global Data Types](https://docs.fromwolf.com/global-data-types.md): Get global data structure to be used across the platform.
+- [Registration API](https://docs.fromwolf.com/user-api/registration-api.md): Lets user signup on the platform
+- [Authentication API](https://docs.fromwolf.com/user-api/authentication-api.md): API for authenticating Users
+- [Available and UpComing Jobs](https://docs.fromwolf.com/available-and-upcoming-jobs.md): Get available jobs for a given job seeker or upcoming jobs for a job seeker.
+- [New Opportunities for Job Seeker](https://docs.fromwolf.com/new-opportunities-for-job-seeker.md): This endpoint provides scoped opportunities for each Job Seeker
+- [Availability Management](https://docs.fromwolf.com/availability-management.md): View availability & calendar of Job seeker: Including scheduled shifts, auto availability and days blocked off.
+- [Job Seeker Campaign Updates](https://docs.fromwolf.com/job-seeker-campaign-updates.md): Making request for a campaign on behalf of a job seeker
+- [Job Seekers Shift updates](https://docs.fromwolf.com/job-seekers-shift-updates.md): This page allows for updates to the shift to the system from a Job Seeker. Like Apply, Reconfirmation, Cancellation, Check-in, Check-out
+- [Get User Timesheets](https://docs.fromwolf.com/get-user-timesheets.md): Allows you to retrieve timesheets for a given user.
+- [Notifications API](https://docs.fromwolf.com/notifications-api.md): Get Notifications for a user and send read status.
+- [Shift Tender Status](https://docs.fromwolf.com/shift-application-status.md): Status of the jobs a candidate has already applied for.
+- [Job Seeker Specific Shift records](https://docs.fromwolf.com/job-seeker-specific-shift-records.md): Get records of shifts for a specific job seeker.
+- [UpNext for Job Seeker](https://docs.fromwolf.com/upnext-for-job-seeker.md): Get what's next for job seeker
+- [Create or Update Job Seeker](https://docs.fromwolf.com/job-seekers-account/create-or-update-job-seeker.md): This endpoint allows to update a job seekers profile.
+- [Custom Onboarding API](https://docs.fromwolf.com/job-seekers-account/custom-onboarding-api.md): This page allows you to retrieve custom onboarding questions and submit the values for a given job seeker.
+- [Job Type preferences](https://docs.fromwolf.com/job-seekers-account/job-type-preferences.md): This end point allows access to list of available job types for a job seeker and update the preferences.
+- [Credentialing requirements](https://docs.fromwolf.com/job-seekers-account/credentialing-requirements.md): API to get credentialing requirements for the job seeker.
+- [Unique Coordinate updates](https://docs.fromwolf.com/job-seekers-account/unique-coordinate-updates.md): User this API to push coordinates to be updated for a given job seeker or any other user. Coordinates could be phone number, email, Unique Messenger id (Whatsapp number, FB messenger id, telegram id)
+- [Get Job Seeker Profile](https://docs.fromwolf.com/job-seekers-account/get-job-seeker-profile.md)
+- [Job seeker education & experience](https://docs.fromwolf.com/job-seekers-account/job-seeker-education-and-experience.md): Getting, updating and deleting education and experience of a job seeker.
+- [Bank Account Connection](https://docs.fromwolf.com/job-seekers-account/bank-account-connection.md): Help your job seeker connect with their bank account via stripe
+- [Get client profile](https://docs.fromwolf.com/client-api/get-client-profile.md): Get profile format and values for the client.
+- [Create or Update client profile](https://docs.fromwolf.com/client-api/create-or-update-client-profile.md)
+- [Get Inbox](https://docs.fromwolf.com/chat/get-inbox.md): Get Inbox for a specific user
+- [Get Conversation](https://docs.fromwolf.com/chat/get-conversation.md): Get detailed conversation for a chat channel.
+- [Send Chat Message](https://docs.fromwolf.com/chat/send-chat-message.md): Send a chat message.
+- [Core Attributes of all API](https://docs.fromwolf.com/glossary/core-attributes-of-all-api.md): These post explains the architecture of the API backend. Helpful for all the API.

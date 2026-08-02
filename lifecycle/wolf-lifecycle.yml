@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: derived
+source: https://docs.fromwolf.com/
+docs: https://docs.fromwolf.com/app-version-status
+description: >-
+  API lifecycle posture for the Wolf staffing-platform API, derived from the
+  public documentation. Wolf versions its API by URI path (/api/v1/) and exposes
+  a client app-version status check. No public status page, deprecation policy,
+  RFC 8594 Sunset/Deprecation header scheme, or published SLA was found.
+versioning:
+  style: uri-path
+  current: v1
+  path_prefix: /api/v1/
+app_version_status:
+  operation: version_status
+  url: https://api.wolf.xyz/api/v1/version_status/:app_category
+  description: Returns app version status per app_category so clients can prompt
+    for upgrades.
+status_page:
+  published: false
+deprecation_policy:
+  published: false
+  sunset_header: false
+sla:
+  published: false
+notes:
+- >-
+  Documentation portal last updated several years ago; the API remains in
+  production under the api.wolf.xyz host (legacy host ondemandstaffing.app).

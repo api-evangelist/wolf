@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: probed
+source: probed well-known paths on Wolf hosts
+description: >-
+  Result of probing standard /.well-known/ discovery paths on the Wolf public
+  hosts. No well-known documents are published. Absence of a record is valid,
+  expected data.
+hosts_probed:
+- fromwolf.com
+- docs.fromwolf.com
+probes:
+- host: docs.fromwolf.com
+  path: /.well-known/security.txt
+  url: https://docs.fromwolf.com/.well-known/security.txt
+  status: 404
+  file: null
+- host: docs.fromwolf.com
+  path: /llms.txt
+  url: https://docs.fromwolf.com/llms.txt
+  status: 200
+  file: ../llms/wolf-llms.txt
+  note: LLMsTxt captured verbatim (see llms/ artifact); listed here for completeness.
+- host: fromwolf.com
+  path: /.well-known/security.txt
+  url: https://fromwolf.com/.well-known/security.txt
+  status: 0
+  file: null
+  note: apex host did not respond (connection timed out) during probe.
+- host: fromwolf.com
+  path: /.well-known/openid-configuration
+  url: https://fromwolf.com/.well-known/openid-configuration
+  status: 0
+  file: null
+- host: fromwolf.com
+  path: /.well-known/oauth-authorization-server
+  url: https://fromwolf.com/.well-known/oauth-authorization-server
+  status: 0
+  file: null
+- host: fromwolf.com
+  path: /.well-known/api-catalog
+  url: https://fromwolf.com/.well-known/api-catalog
+  status: 0
+  file: null
+- host: fromwolf.com
+  path: /.well-known/ai-plugin.json
+  url: https://fromwolf.com/.well-known/ai-plugin.json
+  status: 0
+  file: null
