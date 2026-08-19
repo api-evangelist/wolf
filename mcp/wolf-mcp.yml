@@ -2,11 +2,9 @@ generated: '2026-07-21'
 method: derived
 source: https://docs.fromwolf.com/llms.txt
 status: candidate
-description: >-
-  Candidate MCP (Model Context Protocol) server tool surface for the Wolf
-  staffing-platform API, derived from the documented operations. No official
-  hosted/remote Wolf MCP server was found. This is a proposed tool list an MCP
-  server could expose; each tool maps to a documented HTTP operation. Auth
+description: Candidate MCP (Model Context Protocol) server tool surface for the Wolf staffing-platform
+  API, derived from the documented operations. No official hosted/remote Wolf MCP server was found. This
+  is a proposed tool list an MCP server could expose; each tool maps to a documented HTTP operation. Auth
   requires the tenant key plus a platform API key or user auth token.
 official_server: null
 base_url: https://api.wolf.xyz/api/v1/
@@ -119,3 +117,9 @@ tools:
   description: Send a chat message.
   method: POST
   path: /chat/send_message
+deployment:
+  mode: none
+  verified: derived
+  tools: 27
+  checked: '2026-08-12'
+  source: catalog MCP census
